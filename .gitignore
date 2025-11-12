@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+*.zip
+
+# Test outputs
+test-output/
+
+# Lambda layer directories (temporary build artifacts)
+layer/
+
+# Local development
+todo.txt
+.DS_Store

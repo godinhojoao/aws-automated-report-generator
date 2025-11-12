@@ -1,0 +1,22 @@
+{
+  "name": "static-report-lambda",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node --test __test__/*.spec.js",
+    "local": "node run-local.js",
+    "local:build": "node run-local.js ./build/index.js",
+    "bundle": "mkdir -p build && node scripts/build.js",
+    "build:zip": "npm run bundle && rm -rf function.zip && test -f build/index.js && cd build && zip -r ../function.zip . && cd ..",
+    "create:layer:x64": "rm -rf layer layer.zip && npm install --omit=dev --os=linux --cpu=x64 --include=optional && mkdir -p layer/nodejs && cp -r node_modules layer/nodejs/ && cd layer && zip -r ../layer.zip . && cd .. && rm -rf layer && echo 'Node.js layer created: layer.zip'"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "ejs": "^3.1.9",
+    "html-minifier": "^4.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "aws-sdk-client-mock": "^4.1.0",
+    "esbuild": "^0.19.0"
+  }
+}
